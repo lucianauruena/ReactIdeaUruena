@@ -10,7 +10,7 @@ const NavBar = () => {
         <AppBar position="static" className='header-primary'>
             <Toolbar>
                 <div className='container-logo'>
-                    <img src="./logo_coderhouse.png" />
+                    <img src="./logo-sakura.png" />
                 </div>
                 <ul className='navbar'>
                     <li>
