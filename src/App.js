@@ -1,5 +1,6 @@
 import './App.css';
 import './test.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './componentes/NavBar/NavBar'
 import CardList from './componentes/CardList/CardList';
 import Modal from './componentes/Modal/Modal'
@@ -72,7 +73,16 @@ function App() {
   return (
     //JSX
     <div className="App" >
+      
+      <BrowserRouter>
       <NavBar />
+        <Routes>
+          <Route exact path= '/contact' element={<h1>CONTACTO</h1>}></Route>
+          <Route exact path= '/products' element={<CardList title ={'Productos recomendados'} products={productos}/>}></Route>
+          <Route exact path= '*' element={<h1>PAGINA NO ENCONTRADA</h1>}></Route>
+        </Routes>
+      </BrowserRouter>
+
       <div className='general-container'>
         <CardList title ={'Productos recomendados'} products={productos}/>
     </div>
