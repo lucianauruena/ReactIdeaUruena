@@ -10,27 +10,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// const CardList = ({title, products}) => {
-    
-//     return(
-//         <>
-//         <h2>{title}</h2>
-//         <Grid container spacing={2}>
-//             {
-//                 products.map( ({title, price, image, id, stock}) => {
-//                     return(
-//                         <Grid item md={3} key={id}>
-//                             <CardItem title={title} price={price} image={image} stock={stock}/>
-//                         </Grid>
-//                     )
-//                 })
-//             }
-//         </Grid>
-//         </>
-//     )
-// }
+
 const CardList = ({title, products}) => {
-    console.log("CaRLIST")
     return(
         <>
         <h2>{title}</h2>

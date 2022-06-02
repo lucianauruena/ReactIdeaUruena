@@ -28,3 +28,5 @@ const productos = [
       id: 1
     }
   ]
+
+  export default productos

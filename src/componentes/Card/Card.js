@@ -4,10 +4,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Button } from '@mui/material';
 import Modal from '../Modal/Modal'
+import { Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext';
 
 
-const CardItem = ({ image, title, price, stock, id}) => {
-    console.log("producto id:", id)
+const CardItem = ({ image, title, price, id}) => {
     return(
         <Card sx={{ minWidth: 275 }} className="card-item-container">
             <CardContent>
@@ -15,18 +16,13 @@ const CardItem = ({ image, title, price, stock, id}) => {
                     <div className="card-item__img-box">
                         <img src={`/${image}`} alt={"producto"}/> 
                         <Button variant={'contained'} className="card-btn-details">
-                            {/* VER DESPUES <Link to={`/product/${id}`}>Ver Detalle</Link> */}
+                            <Link to={`/product/${id}`}>Ver Detalle</Link>
                         </Button>
                     </div>
                     <div className='card-item__data-box'>
                         <div className='card-info-data'>
                             <p>{title}</p>
                             <span>$ {price}</span>
-                        </div>
-                        <div className='color-group-selector'>
-                            <button className='color-selector black'></button>
-                            <button className='color-selector green'></button>
-                            <button className='color-selector red'></button>
                         </div>
                         <Button variant={'contained'} className="card-item-button">Agregar al carrito</Button>
                     </div>
@@ -35,4 +31,5 @@ const CardItem = ({ image, title, price, stock, id}) => {
         </Card>
     )
 }
+
 export default CardItem

@@ -7,6 +7,7 @@ import Contacto from './pages/Contacto'
 import NotFound from './pages/NotFound';
 import Detalle from './pages/Detalle';
 import ProductList from './pages/ProductList';
+import { CartProvider } from './context/CartContext'
 
 // import { dateFormat } from './componentes/navbar/navbar'
 
