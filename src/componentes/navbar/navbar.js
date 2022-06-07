@@ -18,7 +18,7 @@ const NavBar = () => {
       setAnchorEl(null);
     };
 
-    const categories = ["musculosas", "remeras", "pantalones"]
+    const categories = ["Cartas Clow", "Pines", "Stickers"]
 
     return (
         <AppBar position="static" className='header-primary'>
