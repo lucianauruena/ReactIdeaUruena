@@ -1,17 +1,21 @@
-import React,{useState} from 'react'
-const ItemCount = ({stock}) => {
-    const [count, setCount] = useState(1)
+import { useState } from "react"
+import { Button } from '@mui/material';
 
-    const onAdd = () => {
-        if(count < stock) {
-            setCount(count + 1)
-        }
+const ItemCount = ({cantidad, setCantidad, setShowButton}) => {
+
+    const addProduct = () => {
+        setCantidad(cantidad + 1)
     }
+
     return(
         <>
-            <button>-</button>
-            <p>{count}</p>
-            <button onClick={onAdd}>+</button>
+        <label>Selecciona cantidad</label>
+        <div style={{display: 'flex', justifyContent: 'space-between', margin: '20px 0', width:'50px'}}>
+            <button >-</button>
+            <p>{cantidad}</p>
+            <button onClick={addProduct}>+</button>
+        </div>
+        <Button variant='outlined' onClick={() => setShowButton(true)}>Agregar producto</Button>
         </>
     )
 }

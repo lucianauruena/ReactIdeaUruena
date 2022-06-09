@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import CardItem from '../Card/Card'
 import { Grid } from '@mui/material';
+import productos from "../../util/productosLista"
+import { useParams } from 'react-router-dom'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
@@ -11,7 +13,67 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 
-const CardList = ({title, products}) => {
+// const CardList = ({title, products}) => {
+//     return(
+//         <>
+//         <h2>{title}</h2>
+//         <Grid container spacing={2}>
+//         <Swiper
+//             spaceBetween={20}
+//             slidesPerView={4}
+//             onSlideChange={() => console.log('slide change')}
+//             onSwiper={(swiper) => console.log(swiper)}
+//             modules={[Pagination, Navigation]}
+//             navigation={true}            
+//         >
+//             {
+//                 products.map( ({title, price, image, id, stock}) => {
+//                     return(
+//                         <SwiperSlide key={id}>
+//                             <CardItem 
+//                                 title={title} 
+//                                 price={price} 
+//                                 image={image} 
+//                                 stock={stock} 
+//                                 id={id}
+//                             />
+//                         </SwiperSlide>
+//                     )
+//                 })
+//             }
+//         </Swiper>
+
+//         </Grid>
+//         </>
+//     )
+// }
+
+const CardList = ({title}) => {
+    const [products, setProducts] = useState([])
+    const { category } = useParams()
+
+    useEffect( () => {
+        setProducts([])
+//         getProducts()
+        // .then( (response) => {
+            category ? filterByCategory(productos, category) : setProducts(productos)
+        // })
+    }, [category])
+
+    
+    // const getProducts = () => {
+    //     return new Promise( (resolve, reject) => {
+    //             resolve(productos)
+    //     })
+    // }  
+
+    const filterByCategory = (array, category) => {
+        return array.map( (item) => {
+            if(item.category === category) {
+                return setProducts(products => [...products, item])
+            }
+        })
+    }
     return(
         <>
         <h2>{title}</h2>
@@ -20,7 +82,6 @@ const CardList = ({title, products}) => {
             spaceBetween={20}
             slidesPerView={4}
             onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
             modules={[Pagination, Navigation]}
             navigation={true}            
         >

@@ -1,14 +1,15 @@
 import './Cards.css'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Button } from '@mui/material';
 import Modal from '../Modal/Modal'
 import { Link } from 'react-router-dom';
-import CartContext from '../../context/CartContext';
+import CartContext from '../../Context/CartContext';
 
 
 const CardItem = ({ image, title, price, id}) => {
+    const { addProductToCart } = useContext(CartContext)
     return(
         <Card sx={{ minWidth: 275 }} className="card-item-container">
             <CardContent>
@@ -24,7 +25,9 @@ const CardItem = ({ image, title, price, id}) => {
                             <p>{title}</p>
                             <span>$ {price}</span>
                         </div>
-                        <Button variant={'contained'} className="card-item-button">Agregar al carrito</Button>
+                        <Button variant={'contained'} 
+                        className="card-item-button"
+                        onClick={() => addProductToCart({ image, title, price, id})}>Agregar al carrito</Button>
                     </div>
                 </div>
             </CardContent>
