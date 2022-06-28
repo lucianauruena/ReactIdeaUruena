@@ -39,28 +39,32 @@ const CartWidget = () =>  {
                     {cartListItems.length === 0 && (
                         <>
                             <p>No hay productos agregados al carrito</p>
-                            <Link to="/products/remeras" >Empezar a comprar</Link>
+                            <Link to="/products/cartas" >Empezar a comprar</Link>
                         </>
                     )}
                     {cartListItems.map( (item) => {
-                        return(
-                        <div className='item-cart-prod' key={item.id}>
-                            <div className='cart-prod__image'>
-                                <img src={`/${item.image}`} alt="prod carrito" />
+                         return(
+                            <div className='item-cart-prod' key={item.id}>
+                                <div className='cart-prod__image'>
+                                    <img src={`/${item.image}`} alt="prod carrito" />
+                                </div>
+                                <div className='cart-prod__info'>
+                                    <p>{item.title}</p>
+                                    <span>$ {item.price}</span>
+                                </div>
+                                <div className='cart-prod__action'>
+                                    <button onClick={() => deleteProduct(item)}>
+                                        <DeleteIcon />
+                                    </button>
+                                </div>
                             </div>
-                            <div className='cart-prod__info'>
-                                <p>{item.title}</p>
-                                <span>$ {item.price}</span>
-                            </div>
-                            <div className='cart-prod__action'>
-                                <button>
-                                    <DeleteIcon />
-                                </button>
-                            </div>
-                        </div>
                         )
                     })}
-                    
+                    <div className='cart-checkout-details'>
+                        <Link to="/cart">
+                            <button style={{cursor: 'pointer'}} onClick={handleClose}>Terminar compra</button>
+                        </Link>
+                    /</div>
                 </div>
             </Menu>
         </div>

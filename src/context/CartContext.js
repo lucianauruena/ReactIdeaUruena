@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const CartContext = createContext()
 
 const CartProvider = ({children}) => {
-    const [cartListItems, setCartListItems] = useState([])
+    const [cartListItems, setCartListItems] = useState(JSON.parse(localStorage.getItem('products')) || [])
     const [totalPrice, setTotalPrice] = useState(0)
 
     const addProductToCart = (product) => {
@@ -11,15 +11,26 @@ const CartProvider = ({children}) => {
         if(!isInCart) {
             console.log("se agrego el producto:", product)
             setTotalPrice(totalPrice + product.price)
+            localStorage.setItem('products', JSON.stringify([...cartListItems, product]))
             return setCartListItems(cartListItems => [...cartListItems, product])
         }
-        console.log("El producto ya se encuentra en el carrito")
+    }
+
+    const deleteProduct = (product) => {
+        setCartListItems(cartListItems.filter( (cartProduct) => cartProduct.id !== product.id) )
+    }
+
+    const cleanCartProducts = () => {
+        setTotalPrice(0)
+        setCartListItems([])
     }
 
     const data = {
         cartListItems,
         addProductToCart,
-        totalPrice
+        totalPrice,
+        cleanCartProducts,
+        deleteProduct
     }
 
     return(
